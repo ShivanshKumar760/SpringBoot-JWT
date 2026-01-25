@@ -1,0 +1,36 @@
+1.Create user entity
+2.Create dto ->Request and  Response dto
+for Request we will have two one when user will register and another when user will
+login and  for Response dto we will Have two dto when user will register what response 
+to give and when user will login what response to give
+
+
+3.Create Mapper i)Request to entity and  ii)entity to Response
+4.Create Repo
+5.User Service which implements:import org.springframework.security.core.userdetails.UserDetailsService;
+it should have 
+    @Override
+    //crucial method for authentication
+    //how
+    //1. loadUserByUsername is called by spring security authentication manager
+    //2. it fetches user from database using userRepo
+    //3. if user is found, it returns UserDetails object with username, password and authorities
+    public UserDetails loadUserByUsername(@NonNull String usernameOremail) throws UsernameNotFoundException{
+        User user=userRepo.findByUsername(usernameOremail).orElseThrow(()->new RuntimeException("User not found"));
+        
+        
+        return new org.springframework.security.core.userdetails.User(
+            user.getUsername(),
+            user.getPassword(),
+            Collections.emptyList()
+        );
+
+6.Create JwtUtil it will have funtion like genrate token or verify them 
+independent file does not depend on anyother file 
+
+7.JwtAuthFilter-depends on UserService and JwtUtil
+8.Create Spring SecurityConfig.java which will have configuration and authentication manager
+as well as password encoder which will be needed for password encoding
+9.Create a AuthService for logining user 
+
+10.AuthController.java
