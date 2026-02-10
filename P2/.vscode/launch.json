@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-JwtpracticeApplication<jwtpractice>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ptwo.jwtpractice.JwtpracticeApplication",
+      "projectName": "jwtpractice",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
