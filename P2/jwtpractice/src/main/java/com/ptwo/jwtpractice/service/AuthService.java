@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.ptwo.jwtpractice.dto.LoginRequestDTO;
 
-//9th file to be created
+//9th file to be created can only be created after 
+//loadByUsername method is created in the UserService class and the UserDetailsService interface is implemented in the UserService class
+//and jwtutil class is created and the jwt auth filter is created
 @Service
 public class AuthService {
     private final AuthenticationManager authenticationManager;
@@ -29,6 +31,13 @@ public class AuthService {
 
         Authentication auth = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(username, password)
+            //What this will do is it will take the username and password and it will check if 
+            // the user exists in the database and if the password is correct. 
+            //If the authentication is successful,
+            //it will return an Authentication object that contains the authenticated user's details. 
+            //If the authentication fails, it will throw an exception.
+
+            //it internally calls the loadUserByUsername method of the UserDetailsService implementation to retrieve the user details and then checks the password against the stored password.
         );
 
 
